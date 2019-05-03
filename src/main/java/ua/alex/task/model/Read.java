@@ -1,6 +1,12 @@
 package ua.alex.task.model;
 
-public class Read {
+import java.time.LocalTime;
 
+public class Read extends Activity {
 
+    public Read() {
+        this.duration = LocalTime.of(1,0);
+        this.timesPerDay = 1;
+        this.periodicity = LocalTime.of(24,0);
+    }
 }

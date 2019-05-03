@@ -34,4 +34,9 @@ public abstract class Day {
     public Map<LocalTime, Activity> getSchedule() {
         return schedule;
     }
+
+    public void addActivities(LocalTime time, Activity activity) {
+        activityList.add(activity);
+        schedule.put(time, activity);
+    }
 }

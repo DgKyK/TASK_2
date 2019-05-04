@@ -23,7 +23,9 @@ public class TestClass {
         Day day = new WorkDay();
         WorkDayOrganizer test = new WorkDayOrganizer(day);
         test.formDay();
-        //for (int i = 0 ; i < day.getSchedule());
+        int dayDuration = day.getEndOfDay().getHour() - day.getStartOfDay().getHour();
+        int durationOfAllDayActivities = day.getActivityList().stream().mapToInt( x -> x.getDuration().getHour()).sum();
+        Assert.assertEquals(dayDuration, durationOfAllDayActivities);
     }
 
     @Test

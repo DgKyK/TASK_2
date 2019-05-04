@@ -42,14 +42,10 @@ public class WorkDayOrganizer implements Organizer {
     }
 
     private List<Activity> getAllActivities() {
-        /* For testing method forDay() */
-        /*List<Activity> result = new LinkedList<>();
-        result.add(new HighImportantActivity());
-        result.add(new LowImportantActivity());
-        result.add(new MiddleImportantActivity());*/
         return dao.getAllActivities();
     }
 
+    /*Below access identifier is public for tests*/
     public boolean isBetweenStartEndOfDay(LocalTime time) {
         return time.getHour() >= day.getStartOfDay().getHour() && time.isBefore(day.getEndOfDay());
     }

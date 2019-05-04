@@ -12,7 +12,9 @@ public abstract class Activity {
     protected int priority;
 
     public Activity() {
-
+        name = "none";
+        duration = LocalTime.of(0,0);
+        periodicity = LocalTime.of(0,0);
     }
 
     public Activity(String name, LocalTime duration, int timesPerDay,LocalTime periodicity, int priority) {

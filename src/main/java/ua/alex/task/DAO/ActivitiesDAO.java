@@ -21,7 +21,7 @@ public class ActivitiesDAO extends AbstractDAO {
 
     public List<Activity> getAllActivities() {
         List<Activity> resultListOfActivities = new LinkedList<>();
-        Statement st;
+        Statement st = null;
         try {
             st = connector.getStatement();
             ResultSet rs = st.executeQuery(SQL_SELECT_ALL_ACTIVITIES);
@@ -44,7 +44,11 @@ public class ActivitiesDAO extends AbstractDAO {
             }
 
         } catch(SQLException e) {
-            System.err.println("");//TODO write normal treatment of exception
+            e.printStackTrace();
+        } finally {
+            if (st != null) {
+                this.closeStatement(st);
+            }
         }
         return resultListOfActivities;
     }

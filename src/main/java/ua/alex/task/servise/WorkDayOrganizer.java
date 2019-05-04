@@ -1,5 +1,7 @@
 package ua.alex.task.servise;
 
+import ua.alex.task.DAO.AbstractDAO;
+import ua.alex.task.DAO.ActivitiesDAO;
 import ua.alex.task.model.*;
 
 import java.time.LocalTime;
@@ -7,8 +9,10 @@ import java.util.*;
 
 public class WorkDayOrganizer implements Organizer {
     private Day day;
+    private ActivitiesDAO dao;
 
     public WorkDayOrganizer(Day day) {
+        this.dao = new ActivitiesDAO();
         this.day = day;
     }
 
@@ -16,6 +20,7 @@ public class WorkDayOrganizer implements Organizer {
     public void formDay() {
         LocalTime startTime = day.getStartOfDay();
         List<Activity> activities = getAllActivities();
+        activities.sort( (first, second) -> first.getPriority() - second.getPriority() );
         Activity currentActivity;
         LocalTime tempTime;
         for(int i = 0; i < activities.size() && !startTime.equals(day.getEndOfDay()); i++) {
@@ -37,12 +42,12 @@ public class WorkDayOrganizer implements Organizer {
     }
 
     private List<Activity> getAllActivities() {
-        /* For testing method */
-        List<Activity> result = new LinkedList<>();
+        /* For testing method forDay() */
+        /*List<Activity> result = new LinkedList<>();
         result.add(new HighImportantActivity());
         result.add(new LowImportantActivity());
-        result.add(new MiddleImportantActivity());
-        return result;
+        result.add(new MiddleImportantActivity());*/
+        return dao.getAllActivities();
     }
 
     private boolean isBetweenStartEndOfDay(LocalTime time) {

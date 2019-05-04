@@ -13,7 +13,7 @@ public class WrapperConnector {
 
     public WrapperConnector() {
         try {
-            ResourceBundle rs = ResourceBundle.getBundle("DBoptions.properties");
+            ResourceBundle rs = ResourceBundle.getBundle("info");
             String url = rs.getString("url");
             String user = rs.getString("user");
             String password = rs.getString("password");
@@ -24,7 +24,7 @@ public class WrapperConnector {
         } catch (MissingResourceException e) {
             System.err.println("Properties file is missing!");
         } catch (SQLException e) {
-            System.err.println("SQL EXCEPTION");
+            e.printStackTrace();
         }
     }
 

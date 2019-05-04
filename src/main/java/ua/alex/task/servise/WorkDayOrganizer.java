@@ -50,16 +50,16 @@ public class WorkDayOrganizer implements Organizer {
         return dao.getAllActivities();
     }
 
-    private boolean isBetweenStartEndOfDay(LocalTime time) {
+    public boolean isBetweenStartEndOfDay(LocalTime time) {
         return time.getHour() >= day.getStartOfDay().getHour() && time.isBefore(day.getEndOfDay());
     }
 
-    private boolean checkIsTimeFree(LocalTime time) {
+    protected boolean checkIsTimeFree(LocalTime time) {
         Activity temp = day.getSchedule().get(time);
         return temp == null;
     }
 
-    private boolean enoughTimeForActivity(LocalTime startTime, Activity activity) {
+    protected boolean enoughTimeForActivity(LocalTime startTime, Activity activity) {
         int duration = activity.getDuration().getHour();
         Map<LocalTime, Activity> schedule = day.getSchedule();
         Activity temp;

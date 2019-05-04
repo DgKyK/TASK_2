@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class TestClass {
+public class MyDebuger {
     public static void main(String[] args) {
         Day day = new WorkDay();
         WorkDayOrganizer test = new WorkDayOrganizer(day);
         test.formDay();
-        System.out.println(day);
+        System.out.println(day.getActivityList());
     }
 }

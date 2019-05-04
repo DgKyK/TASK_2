@@ -1,4 +1,4 @@
-package ua.alex.task.model;
+package ua.alex.task.servise;
 
 public interface Organizer {
     void formDay();

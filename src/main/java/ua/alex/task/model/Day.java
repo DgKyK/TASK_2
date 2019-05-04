@@ -39,4 +39,11 @@ public abstract class Day {
         activityList.add(activity);
         schedule.put(time, activity);
     }
+
+    @Override
+    public String toString() {
+        return "Day{" +
+                "schedule=" + schedule +
+                '}';
+    }
 }

@@ -1,4 +1,6 @@
-package ua.alex.task.model;
+package ua.alex.task.servise;
+
+import ua.alex.task.model.*;
 
 import java.time.LocalTime;
 import java.util.*;
@@ -16,16 +18,17 @@ public class WorkDayOrganizer implements Organizer {
         List<Activity> activities = getAllActivities();
         Activity currentActivity;
         LocalTime tempTime;
-        for(int i = 0; i < activities.size() || !startTime.equals(day.getEndOfDay()); i++) {
+        for(int i = 0; i < activities.size() && !startTime.equals(day.getEndOfDay()); i++) {
             currentActivity = activities.get(i);
             tempTime = startTime;
-            if (isBetweenStartEndOfDay(startTime) || enoughTimeForActivity(startTime, currentActivity)) {
+            if (isBetweenStartEndOfDay(startTime) && enoughTimeForActivity(startTime, currentActivity)) {
                 if (checkIsTimeFree(startTime)) {
                     day.addActivities(startTime, currentActivity);
                     startTime = startTime.plusHours(currentActivity.getDuration().getHour());
-                    if (currentActivity.getTimesPerDay() == 2 ||
-                                    checkIsTimeFree(startTime.plusHours(currentActivity.getDuration().getHour()))) {
-                        tempTime = startTime.plusHours(currentActivity.getDuration().getHour());
+                    tempTime = startTime.plusHours(currentActivity.getPeriodicity().getHour());
+                    if (currentActivity.getTimesPerDay() == 2 &&
+                                    checkIsTimeFree(tempTime) && isBetweenStartEndOfDay(tempTime) &&
+                                    enoughTimeForActivity(tempTime,currentActivity)) {
                         day.addActivities(tempTime, currentActivity);
                     }
                 }
@@ -34,11 +37,11 @@ public class WorkDayOrganizer implements Organizer {
     }
 
     private List<Activity> getAllActivities() {
+        /* For testing method */
         List<Activity> result = new LinkedList<>();
-        result.add(new Read());
-        result.add(new Clean());
-        result.add(new WorkOut());
-        result.add(new Job());
+        result.add(new HighImportantActivity());
+        result.add(new LowImportantActivity());
+        result.add(new MiddleImportantActivity());
         return result;
     }
 

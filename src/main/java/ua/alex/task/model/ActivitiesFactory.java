@@ -1,19 +1,16 @@
 package ua.alex.task.model;
 
 public class ActivitiesFactory {
-    public Clean createClean() {
-        return new Clean();
+
+    public MiddleImportantActivity createMiddleImportantActivity() {
+        return new MiddleImportantActivity();
     }
 
-    public Job createJob() {
-        return new Job();
+    public HighImportantActivity createHighImportantActivity() {
+        return new HighImportantActivity();
     }
 
-    public WorkOut createWorkOut() {
-        return new WorkOut();
-    }
-
-    public Read createRead() {
-        return new Read();
+    public LowImportantActivity createLowImportantActivity() {
+        return new LowImportantActivity();
     }
 }

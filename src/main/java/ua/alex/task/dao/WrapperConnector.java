@@ -1,4 +1,4 @@
-package ua.alex.task.DAO;
+package ua.alex.task.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,7 @@ public class WrapperConnector {
 
     public WrapperConnector() {
         try {
-            ResourceBundle rs = ResourceBundle.getBundle("info");
+            ResourceBundle rs = ResourceBundle.getBundle("dbinfo");
             String url = rs.getString("url");
             String user = rs.getString("user");
             String password = rs.getString("password");

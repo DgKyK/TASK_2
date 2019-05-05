@@ -1,10 +1,7 @@
 package ua.alex.task.model;
 
 import java.time.LocalTime;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class Day {
     private List<Activity> activityList;
@@ -16,7 +13,7 @@ public abstract class Day {
         startOfDay = LocalTime.of(12,0);
         endOfDay = LocalTime.of(20,0);
         activityList = new LinkedList<>();
-        schedule = new HashMap<>();
+        schedule = new TreeMap<>();
     }
 
     public List<Activity> getActivityList() {

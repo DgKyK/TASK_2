@@ -1,4 +1,4 @@
-package ua.alex.task.DAO;
+package ua.alex.task.dao;
 
 import java.sql.Statement;
 

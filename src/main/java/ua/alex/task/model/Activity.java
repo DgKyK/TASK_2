@@ -1,7 +1,5 @@
 package ua.alex.task.model;
 
-import ua.alex.task.DAO.ActivitiesDAO;
-
 import java.time.LocalTime;
 
 public abstract class Activity {
@@ -67,10 +65,10 @@ public abstract class Activity {
 
     @Override
     public String toString() {
-        return "Activity{" + name +
-                ", duration=" + duration +
+        return  name +
+                " : duration=" + duration +
                 ", timesPerDay=" + timesPerDay +
-                ", periodicity=" + periodicity +
+                ", priority=" + priority +
                 "\n";
     }
 }

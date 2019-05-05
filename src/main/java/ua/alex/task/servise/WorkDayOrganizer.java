@@ -1,7 +1,6 @@
 package ua.alex.task.servise;
 
-import ua.alex.task.DAO.AbstractDAO;
-import ua.alex.task.DAO.ActivitiesDAO;
+import ua.alex.task.dao.ActivitiesDAO;
 import ua.alex.task.model.*;
 
 import java.time.LocalTime;
@@ -20,14 +19,14 @@ public class WorkDayOrganizer implements Organizer {
     public void formDay() {
         LocalTime startTime = day.getStartOfDay();
         List<Activity> activities = getAllActivities();
-        activities.sort( (first, second) -> first.getPriority() - second.getPriority() );
+        activities.sort( Comparator.comparingInt(Activity::getPriority) );
         Activity currentActivity;
         LocalTime tempTime;
         for(int i = 0; i < activities.size() && !startTime.equals(day.getEndOfDay()); i++) {
             currentActivity = activities.get(i);
             tempTime = startTime;
-            if (isBetweenStartEndOfDay(startTime) && enoughTimeForActivity(startTime, currentActivity)) {
-                if (checkIsTimeFree(startTime)) {
+            if (isBetweenStartEndOfDay(startTime) && enoughTimeForActivity(startTime, currentActivity) &&
+                            checkIsTimeFree(startTime)) {
                     day.addActivities(startTime, currentActivity);
                     startTime = startTime.plusHours(currentActivity.getDuration().getHour());
                     tempTime = startTime.plusHours(currentActivity.getPeriodicity().getHour());
@@ -36,7 +35,6 @@ public class WorkDayOrganizer implements Organizer {
                                     enoughTimeForActivity(tempTime,currentActivity)) {
                         day.addActivities(tempTime, currentActivity);
                     }
-                }
             }
         }
     }
@@ -50,12 +48,12 @@ public class WorkDayOrganizer implements Organizer {
         return time.getHour() >= day.getStartOfDay().getHour() && time.isBefore(day.getEndOfDay());
     }
 
-    protected boolean checkIsTimeFree(LocalTime time) {
+    private boolean checkIsTimeFree(LocalTime time) {
         Activity temp = day.getSchedule().get(time);
         return temp == null;
     }
 
-    protected boolean enoughTimeForActivity(LocalTime startTime, Activity activity) {
+    private boolean enoughTimeForActivity(LocalTime startTime, Activity activity) {
         int duration = activity.getDuration().getHour();
         Map<LocalTime, Activity> schedule = day.getSchedule();
         Activity temp;

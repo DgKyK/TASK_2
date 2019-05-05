@@ -1,10 +1,8 @@
-package ua.alex.task.DAO;
+package ua.alex.task.dao;
 
 import ua.alex.task.model.ActivitiesFactory;
 import ua.alex.task.model.Activity;
-import ua.alex.task.model.HighImportantActivity;
 
-import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -60,6 +58,5 @@ public class ActivitiesDAO extends AbstractDAO {
         activity.setDuration(LocalTime.of(duration,0));
         activity.setPeriodicity(LocalTime.of(periodicity,0));
         activity.setTimesPerDay(timesPerDay);
-
     }
 }

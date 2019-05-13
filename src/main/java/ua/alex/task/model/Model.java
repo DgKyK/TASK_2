@@ -7,8 +7,8 @@ import java.time.LocalTime;
 import java.util.Map;
 
 public class Model {
-    Organizer organizer;
-    Day day;
+    private Organizer organizer;
+    private Day day;
     public Model() {
         day = new WorkDay();
         organizer = new WorkDayOrganizer(day);

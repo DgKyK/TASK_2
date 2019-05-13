@@ -20,7 +20,10 @@ public class WrapperConnector {
             Properties properties = new Properties();
             properties.put("user", user);
             properties.put("password", password);
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, properties);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         } catch (MissingResourceException e) {
             System.err.println("Properties file is missing!");
         } catch (SQLException e) {

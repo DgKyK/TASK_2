@@ -1,5 +1,9 @@
 package ua.alex.task.model;
 
+import ua.alex.task.model.entity.HighImportantActivity;
+import ua.alex.task.model.entity.LowImportantActivity;
+import ua.alex.task.model.entity.MiddleImportantActivity;
+
 public class ActivitiesFactory {
 
     public MiddleImportantActivity createMiddleImportantActivity() {

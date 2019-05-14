@@ -1,4 +1,4 @@
-package ua.alex.task.dao;
+package ua.alex.task.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

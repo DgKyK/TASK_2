@@ -1,4 +1,6 @@
-package ua.alex.task.model;
+package ua.alex.task.model.entity;
+
+import ua.alex.task.model.Day;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

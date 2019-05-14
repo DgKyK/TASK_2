@@ -1,10 +1,10 @@
 import org.junit.Assert;
 import org.junit.Test;
-import ua.alex.task.dao.ActivitiesDAO;
+import ua.alex.task.model.dao.ActivitiesDAO;
 import ua.alex.task.model.Activity;
 import ua.alex.task.model.Day;
-import ua.alex.task.model.WorkDay;
-import ua.alex.task.servise.WorkDayOrganizer;
+import ua.alex.task.model.entity.WorkDay;
+import ua.alex.task.model.servise.WorkDayOrganizer;
 
 import java.time.LocalTime;
 import java.util.List;

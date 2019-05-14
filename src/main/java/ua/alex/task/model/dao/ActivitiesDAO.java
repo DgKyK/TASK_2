@@ -1,4 +1,4 @@
-package ua.alex.task.dao;
+package ua.alex.task.model.dao;
 
 import ua.alex.task.model.ActivitiesFactory;
 import ua.alex.task.model.Activity;
@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ActivitiesDAO extends AbstractDAO {
+public class ActivitiesDAO extends AbstractDAO {                    // TODO you have to create select which get exact data that you want , and delete unnecessary checkers
     private static final String SQL_SELECT_ALL_ACTIVITIES = "SELECT * FROM mydb.activities";
 
     public ActivitiesDAO() {

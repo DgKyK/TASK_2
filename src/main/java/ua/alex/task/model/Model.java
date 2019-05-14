@@ -1,7 +1,8 @@
 package ua.alex.task.model;
 
-import ua.alex.task.servise.Organizer;
-import ua.alex.task.servise.WorkDayOrganizer;
+import ua.alex.task.model.entity.WorkDay;
+import ua.alex.task.model.servise.Organizer;
+import ua.alex.task.model.servise.WorkDayOrganizer;
 
 import java.time.LocalTime;
 import java.util.Map;

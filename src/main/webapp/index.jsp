@@ -11,7 +11,7 @@
     <title>Start Page</title>
 </head>
     <body>
-        <form method="GET" action="servlet">
+        <form action="servlet" method="get">
             <center>
                 <h2>To create your schedule press button</h2>
                 <input type="submit" value="CREATE MY SCHEDULE"/>

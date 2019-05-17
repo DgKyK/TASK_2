@@ -3,10 +3,10 @@ package ua.alex.task.model;
 import java.time.LocalTime;
 
 public abstract class Activity {
-    protected String name;
-    protected LocalTime duration;
-    protected LocalTime periodicity;
-    protected int priority;
+    private String name;
+    private LocalTime duration;
+    private LocalTime periodicity;
+    private int priority;
 
     public Activity() {
         name = "none";
@@ -55,8 +55,7 @@ public abstract class Activity {
 
     @Override
     public String toString() {
-        return  name +
-                " : duration=" + duration +
+        return  " duration=" + duration +
                 ", priority=" + priority +
                 "\n";
     }

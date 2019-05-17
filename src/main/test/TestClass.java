@@ -1,8 +1,10 @@
 import org.junit.Assert;
 import org.junit.Test;
-import ua.alex.task.model.dao.ActivitiesDAO;
 import ua.alex.task.model.Activity;
 import ua.alex.task.model.Day;
+import ua.alex.task.model.dao.ActivitiesDao;
+
+import ua.alex.task.model.dao.DaoFactory;
 import ua.alex.task.model.entity.WorkDay;
 import ua.alex.task.model.servise.WorkDayOrganizer;
 
@@ -12,8 +14,9 @@ import java.util.List;
 public class TestClass {
     @Test
     public void testActivitiesDAO() {
-        ActivitiesDAO dao = new ActivitiesDAO();
-        List<Activity> testList = dao.getAllActivities();
+        DaoFactory factory = DaoFactory.getInstance();
+        ActivitiesDao dao = factory.createActivityDao();
+        List<Activity> testList = dao.getAll();
         Assert.assertTrue(testList.size() > 0);
     }
 
@@ -25,15 +28,5 @@ public class TestClass {
         int dayDuration = day.getEndOfDay().getHour() - day.getStartOfDay().getHour();
         int durationOfAllDayActivities = day.getActivityList().stream().mapToInt( x -> x.getDuration().getHour()).sum();
         Assert.assertEquals(dayDuration, durationOfAllDayActivities);
-    }
-
-    @Test
-    public void testIsBeetweenStartEndOfDay() {
-        Day day = new WorkDay();
-        WorkDayOrganizer test = new WorkDayOrganizer(day);
-        LocalTime testTime = LocalTime.of(12,0);
-        Boolean ethalon = testTime.getHour() >= day.getStartOfDay().getHour() && testTime.isBefore(day.getEndOfDay());
-        Boolean compared = test.isBetweenStartEndOfDay(testTime);
-        Assert.assertTrue(ethalon && compared);
     }
 }

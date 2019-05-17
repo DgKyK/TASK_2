@@ -7,13 +7,15 @@ public abstract class Day {
     private List<Activity> activityList;
     private LocalTime startOfDay;
     private LocalTime endOfDay;
-    private Map<LocalTime, Activity> schedule; // TODO you have to implement this without map because it provides
+    private int durationOfDayInHours;
+
 
     public Day() {
         startOfDay = LocalTime.of(12,0);
         endOfDay = LocalTime.of(20,0);
         activityList = new LinkedList<>();
-        schedule = new TreeMap<>();             // TODO create interface Schedule and than implement it by WorDaySchedule
+        activityList = new ArrayList<>();
+        durationOfDayInHours = endOfDay.minusHours(startOfDay.getHour()).getHour();
     }
 
     public List<Activity> getActivityList() {
@@ -28,19 +30,18 @@ public abstract class Day {
         return endOfDay;
     }
 
-    public Map<LocalTime, Activity> getSchedule() {
-        return schedule;
+    public int getDurationOfDayInHours() {
+        return durationOfDayInHours;
     }
 
-    public void addActivities(LocalTime time, Activity activity) {          // TODO it`s have to be at WorDaySchedule
+    public void addActivities(Activity activity) {
         activityList.add(activity);
-        schedule.put(time, activity);
     }
 
     @Override
-    public String toString() {                                  // TODO present another toString , it`s already old
+    public String toString() {
         return "Day{" +
-                "schedule=" + schedule +
+                "activities=" +
                 '}';
     }
 }

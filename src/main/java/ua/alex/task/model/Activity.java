@@ -5,7 +5,6 @@ import java.time.LocalTime;
 public abstract class Activity {
     protected String name;
     protected LocalTime duration;
-    protected int timesPerDay;
     protected LocalTime periodicity;
     protected int priority;
 
@@ -15,16 +14,11 @@ public abstract class Activity {
         periodicity = LocalTime.of(0,0);
     }
 
-    public Activity(String name, LocalTime duration, int timesPerDay,LocalTime periodicity, int priority) {
+    public Activity(String name, LocalTime duration, LocalTime periodicity, int priority) {
         this.name = name;
         this.duration = duration;
-        this.timesPerDay = timesPerDay;
         this.periodicity = periodicity;
         this.priority = priority;
-    }
-
-    public int getTimesPerDay() {
-        return timesPerDay;
     }
 
     public LocalTime getPeriodicity() {
@@ -47,10 +41,6 @@ public abstract class Activity {
         this.duration = duration;
     }
 
-    public void setTimesPerDay(int timesPerDay) {
-        this.timesPerDay = timesPerDay;
-    }
-
     public void setPeriodicity(LocalTime periodicity) {
         this.periodicity = periodicity;
     }
@@ -63,12 +53,10 @@ public abstract class Activity {
         this.priority = priority;
     }
 
-
     @Override
     public String toString() {
         return  name +
                 " : duration=" + duration +
-                ", timesPerDay=" + timesPerDay +
                 ", priority=" + priority +
                 "\n";
     }

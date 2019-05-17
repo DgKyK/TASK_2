@@ -16,13 +16,13 @@
             <h2>Your schedule</h2>
             <table border="1px">
                 <tr>
-                    <td>Time</td>
-                    <td>Activity</td>
+                    <td>Name</td>
+                    <td>Info</td>
                 </tr>
                 <c:forEach var="activity" items="${activities}">
                     <tr>
-                        <td><c:out value="${activity.key}"/> </td>
-                        <td><c:out value="${activity.value}"/> </td>
+                        <td><c:out value="${activity.name}"/> </td>
+                        <td><c:out value="${activity}"/> </td>
                     </tr>
                 </c:forEach>
             </table>

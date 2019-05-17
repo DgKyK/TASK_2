@@ -5,6 +5,7 @@ import ua.alex.task.model.servise.Organizer;
 import ua.alex.task.model.servise.WorkDayOrganizer;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Map;
 
 public class Model {
@@ -19,8 +20,8 @@ public class Model {
         organizer.formDay();
     }
 
-    public Map<LocalTime, Activity> getDaySchedule() {
-        return day.getSchedule();
+    public List<Activity> getDayActivities() {
+        return day.getActivityList();
     }
 
     public void setDay(Day day) {

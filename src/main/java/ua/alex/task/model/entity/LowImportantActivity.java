@@ -10,7 +10,7 @@ public class LowImportantActivity extends Activity {
 
     }
 
-    public LowImportantActivity(String name, LocalTime duration, int timesPerDay,LocalTime periodicity, int priority) {
-        super(name, duration, timesPerDay, periodicity, priority);
+    public LowImportantActivity(String name, LocalTime duration, LocalTime periodicity, int priority) {
+        super(name, duration, periodicity, priority);
     }
 }

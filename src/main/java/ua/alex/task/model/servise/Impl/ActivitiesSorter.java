@@ -1,4 +1,4 @@
-package ua.alex.task.model.servise;
+package ua.alex.task.model.servise.Impl;
 
 import ua.alex.task.model.Activity;
 

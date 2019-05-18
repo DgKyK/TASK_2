@@ -1,9 +1,7 @@
 package ua.alex.task.model;
 
 import ua.alex.task.model.entity.WorkDay;
-import ua.alex.task.model.servise.WorkDayOrganizer;
-
-import java.time.LocalTime;
+import ua.alex.task.model.servise.Impl.WorkDayOrganizer;
 
 public class MyDebuger {
     public static void main(String[] args) {

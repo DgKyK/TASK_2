@@ -2,11 +2,9 @@ package ua.alex.task.model;
 
 import ua.alex.task.model.entity.WorkDay;
 import ua.alex.task.model.servise.Organizer;
-import ua.alex.task.model.servise.WorkDayOrganizer;
+import ua.alex.task.model.servise.Impl.WorkDayOrganizer;
 
-import java.time.LocalTime;
 import java.util.List;
-import java.util.Map;
 
 public class Model {
     private Organizer organizer;

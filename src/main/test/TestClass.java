@@ -6,9 +6,8 @@ import ua.alex.task.model.dao.ActivitiesDao;
 
 import ua.alex.task.model.dao.DaoFactory;
 import ua.alex.task.model.entity.WorkDay;
-import ua.alex.task.model.servise.WorkDayOrganizer;
+import ua.alex.task.model.servise.Impl.WorkDayOrganizer;
 
-import java.time.LocalTime;
 import java.util.List;
 
 public class TestClass {

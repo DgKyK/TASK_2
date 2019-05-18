@@ -1,24 +1,25 @@
-package ua.alex.task.model.servise;
+package ua.alex.task.model.servise.Impl;
 
 import ua.alex.task.model.dao.ActivitiesDao;
 import ua.alex.task.model.*;
-import ua.alex.task.model.dao.DaoFactory;
+import ua.alex.task.model.servise.ActivitiesService;
+import ua.alex.task.model.servise.Organizer;
 
 import java.util.*;
 
 public class WorkDayOrganizer implements Organizer {
     private Day day;
     private ActivitiesDao dao;
+    private ActivitiesService activitiesService;
 
     public WorkDayOrganizer(Day day) {
-        DaoFactory factory = DaoFactory.getInstance();
-        this.dao = factory.createActivityDao();
+        this.activitiesService = new ActivitiesServiceImpl();
         this.day = day;
     }
 
     @Override
     public void formDay() {
-        List<Activity> activities = getAllActivities();
+        List<Activity> activities = activitiesService.getAllSuitableActivities(day);
         int timeLeft = day.getDurationOfDayInHours();
         ActivitiesSorter sorter = new ActivitiesSorter();
         sorter.sortByPriority(activities);
@@ -27,11 +28,6 @@ public class WorkDayOrganizer implements Organizer {
             timeLeft -= activities.get(i).getDuration().getHour();
         }
 
-    }
-
-
-    private List<Activity> getAllActivities() {
-        return dao.getSuitableActivities(day);
     }
 
 }

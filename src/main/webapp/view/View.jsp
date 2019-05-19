@@ -16,13 +16,21 @@
     <h2>Your schedule</h2>
     <table border="1px">
         <tr>
+            <td>Start Time</td>
             <td>Name</td>
-            <td>Info</td>
+            <td>Duration</td>
+            <td>Priority</td>
         </tr>
-        <c:forEach var="activity" items="${activities}">
+        <c:forEach var="activityList" items="${activities}">
             <tr>
-                <td><c:out value="${activity.name}"/> </td>
-                <td><c:out value="${activity}"/> </td>
+                <c:forEach var="activity" items="${activityList}">
+                    <tr>
+                        <td><c:out value="${activity.startTime}"/> </td>
+                        <td><c:out value="${activity.name}"/> </td>
+                        <td><c:out value="${activity.duration}"/> </td>
+                        <td><c:out value="${activity.priority}"/> </td>
+                    </tr>
+                </c:forEach>
             </tr>
         </c:forEach>
     </table>

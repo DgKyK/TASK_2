@@ -1,6 +1,5 @@
 package ua.alex.task.model.dao;
 
-import ua.alex.task.model.Activity;
 import ua.alex.task.model.dao.Impl.JDBCDaoFactory;
 
 public abstract class DaoFactory {

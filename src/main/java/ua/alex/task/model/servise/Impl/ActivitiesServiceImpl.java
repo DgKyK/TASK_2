@@ -10,14 +10,16 @@ import java.util.List;
 
 public class ActivitiesServiceImpl implements ActivitiesService {
     private ActivitiesDao dao;
+    private Day day;
 
-    public ActivitiesServiceImpl() {
+    public ActivitiesServiceImpl(Day day) {
         DaoFactory factory = DaoFactory.getInstance();
         dao = factory.createActivityDao();
+        this.day = day;
     }
 
     @Override
-    public List<Activity> getAllSuitableActivities(Day day) {
-        return dao.getSuitableActivities(day);
+    public List<Activity> getAllSuitableActivitiesByPriority(int priority) {
+        return dao.getSuitableActivitiesByPriority(day, priority);
     }
 }

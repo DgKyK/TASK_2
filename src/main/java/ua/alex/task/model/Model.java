@@ -18,8 +18,8 @@ public class Model {
         organizer.formDay();
     }
 
-    public List<Activity> getDayActivities() {
-        return day.getActivityList();
+    public List<List<Activity>> getDayActivitiesLists() {
+        return day.getActivitiesByPriorityList();
     }
 
     public void setDay(Day day) {

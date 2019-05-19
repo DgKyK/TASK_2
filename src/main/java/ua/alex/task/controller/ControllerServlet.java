@@ -19,7 +19,7 @@ public class ControllerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         model.formDaySchedule();
-        request.setAttribute("activities", model.getDayActivities());
+        request.setAttribute("activities", model.getDayActivitiesLists());
         request.getRequestDispatcher("view/View.jsp").forward(request, response);
     }
 }

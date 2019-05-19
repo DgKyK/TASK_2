@@ -10,7 +10,7 @@ public class MiddleImportantActivity extends Activity {
 
     }
 
-    public MiddleImportantActivity(String name, LocalTime duration, int timesPerDay,LocalTime periodicity, int priority) {
-        super(name, duration, periodicity, priority);
+    public MiddleImportantActivity(String name, LocalTime startTime, LocalTime duration, LocalTime periodicity, int priority) {
+        super(name, startTime, duration, periodicity, priority);
     }
 }

@@ -7,6 +7,7 @@ public abstract class Activity {
     private LocalTime duration;
     private LocalTime periodicity;
     private int priority;
+    private LocalTime startTime;
 
     public Activity() {
         name = "none";
@@ -14,8 +15,9 @@ public abstract class Activity {
         periodicity = LocalTime.of(0,0);
     }
 
-    public Activity(String name, LocalTime duration, LocalTime periodicity, int priority) {
+    public Activity(String name, LocalTime startTime, LocalTime duration, LocalTime periodicity, int priority) {
         this.name = name;
+        this.startTime = startTime;
         this.duration = duration;
         this.periodicity = periodicity;
         this.priority = priority;
@@ -33,6 +35,14 @@ public abstract class Activity {
         return name;
     }
 
+    public int getPriority() {
+        return priority;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -45,18 +55,20 @@ public abstract class Activity {
         this.periodicity = periodicity;
     }
 
-    public int getPriority() {
-        return priority;
-    }
-
     public void setPriority(int priority) {
         this.priority = priority;
     }
 
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
     @Override
     public String toString() {
-        return  " duration=" + duration +
+        return  "name=" + name +
+                " duration=" + duration +
                 ", priority=" + priority +
+                "start time=" + startTime +
                 "\n";
     }
 }

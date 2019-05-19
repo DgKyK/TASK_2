@@ -10,10 +10,11 @@ import java.util.List;
 
 public class JDBCActivitiesDao implements ActivitiesDao {
     private Connection connection;
-    private static final String SQL_SELECT_ALL_ACTIVITIES = "SELECT * FROM activities";
+    private static final String SQL_SELECT_ALL_ACTIVITIES = "SELECT * FROM activities JOIN activities_time ON " +
+            "activities_time.name = activities.name";
     private static final String SQL_SELECT_ACTIVITIES_BETWEEN_TIME_BY_PRIORITY = "SELECT * FROM activities" +
             " JOIN activities_time ON activities_time.name = activities.name" +
-            " WHERE day_time >= ? AND day_time < ? AND priority = ?";
+            " WHERE activities_time.day_time >= ? AND day_time < ? AND priority = ?";
 
 
     public JDBCActivitiesDao(Connection connection) {

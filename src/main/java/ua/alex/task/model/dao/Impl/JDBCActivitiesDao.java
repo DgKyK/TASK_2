@@ -16,7 +16,6 @@ public class JDBCActivitiesDao implements ActivitiesDao {
             " JOIN activities_time ON activities_time.name = activities.name" +
             " WHERE activities_time.day_time >= ? AND day_time < ? AND priority = ?";
 
-
     public JDBCActivitiesDao(Connection connection) {
         this.connection = connection;
     }

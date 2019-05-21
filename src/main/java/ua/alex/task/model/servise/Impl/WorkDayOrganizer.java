@@ -13,10 +13,10 @@ public class WorkDayOrganizer implements Organizer {
     private DayTimeLineService dayTimeLineService;
     private final int MAX_PRIORITY_LEVEL = 3;
 
-    public WorkDayOrganizer(Day day) {
+    public WorkDayOrganizer(Day day, ActivitiesService activitiesService, DayTimeLineService dayTimeLineService) {
         this.day = day;
-        this.activitiesService = new ActivitiesServiceImpl(day);
-        this.dayTimeLineService = new DayTimeLineServiceImpl(day);
+        this.activitiesService = activitiesService;
+        this.dayTimeLineService = dayTimeLineService;
     }
 
     @Override
@@ -29,5 +29,4 @@ public class WorkDayOrganizer implements Organizer {
             day.addActivitiesList(currentActivitiesList);
         }
     }
-
 }
